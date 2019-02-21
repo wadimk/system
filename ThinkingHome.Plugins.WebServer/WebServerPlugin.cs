@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,7 +30,7 @@ namespace ThinkingHome.Plugins.WebServer
                 .UseKestrel()
                 .UseUrls($"http://+:{port}")
                 .Configure(app => app
-                    .UseSignalR(routes => routes.MapHub<MessageHub>(MessageHub.HUB_ROUTE))
+                    .UseSignalR(routes => routes.MapHub<MessageHub>(new PathString(UsePathBaseExtensions.UsePathBase(null,$"/{MessageHub.HUB_ROUTE}"))))
                     .UseResponseCompression()
                     .UseStatusCodePages()
                     .UseMiddleware<HomePluginsMiddleware>(handlers))
