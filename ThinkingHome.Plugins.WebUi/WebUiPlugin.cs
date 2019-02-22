@@ -28,10 +28,14 @@ namespace ThinkingHome.Plugins.WebUi
     [JavaScriptResource("/static/web-ui/errors.js", "ThinkingHome.Plugins.WebUi.Resources.Application.errors.js")]
     [JavaScriptResource("/static/web-ui/dummy.js", "ThinkingHome.Plugins.WebUi.Resources.Application.dummy.js")]
 
+    [JavaScriptResource("/static/web-ui/home.js", "ThinkingHome.Plugins.WebUi.Resources.Application.home.js")]
+
     // templates
     [TemplateResource("/static/web-ui/layout.tpl", "ThinkingHome.Plugins.WebUi.Resources.Application.layout.tpl")]
     [TemplateResource("/static/web-ui/error.tpl", "ThinkingHome.Plugins.WebUi.Resources.Application.error.tpl")]
     [TemplateResource("/static/web-ui/dummy.tpl", "ThinkingHome.Plugins.WebUi.Resources.Application.dummy.tpl")]
+
+    [TemplateResource("/static/web-ui/home.tpl", "ThinkingHome.Plugins.WebUi.Resources.Application.home.tpl")]
 
     // i18n
     [HttpLocalizationResource("/static/web-ui/lang.json")]

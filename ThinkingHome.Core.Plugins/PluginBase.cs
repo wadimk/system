@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace ThinkingHome.Core.Plugins
 {
-    public abstract class PluginBase
+    public abstract class PluginBase: IPlugin
     {
         #region properties
 

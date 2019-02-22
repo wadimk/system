@@ -89,7 +89,9 @@ namespace ThinkingHome.Plugins.Cron
 
                     var scriptPlugin = Context.Require<ScriptsPlugin>();
 
-                    using (var session = Context.Require<DatabasePlugin>().OpenSession())
+                    var database = Context.Require<DatabasePlugin>();
+
+                    using (var session = database.OpenSession())
                     {
                         foreach (var task in active)
                         {

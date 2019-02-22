@@ -2,7 +2,7 @@ var lib = require('lib');
 
 var Radio = lib.common.ApplicationBlock.extend({
     initialize: function () {
-        this.route = '/' + this.getOption('route');
+        this.route = this.getOption('route');
         this.clientMethod = this.getOption('clientMethod');
         this.serverMethod = this.getOption('serverMethod');
         this.reconnectionTimeout = this.getOption('reconnectionTimeout');

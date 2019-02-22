@@ -16,7 +16,7 @@ using ThinkingHome.Plugins.WebServer.Messages;
 namespace ThinkingHome.Plugins.WebServer
 {
     public class WebServerPlugin : PluginBase
-    {
+    { 
         private IWebHost host;
 
         private IHubContext<MessageHub> hubContext;
@@ -27,21 +27,23 @@ namespace ThinkingHome.Plugins.WebServer
             var handlers = RegisterHandlers();
 
             host = new WebHostBuilder()
-                .UseKestrel()
-                .UseUrls($"http://+:{port}")
+                .UseKestrel()                
+                .UseUrls($"http://+:{port}")                
                 .Configure(app => app
-                    .UseSignalR(routes => routes.MapHub<MessageHub>(new PathString(UsePathBaseExtensions.UsePathBase(null,$"/{MessageHub.HUB_ROUTE}"))))
+                    .UseSignalR(routes => routes.MapHub<MessageHub>(new PathString($"{MessageHub.HUB_ROUTE}")))                    
                     .UseResponseCompression()
-                    .UseStatusCodePages()
+                    .UseStatusCodePages()                    
                     .UseMiddleware<HomePluginsMiddleware>(handlers))
                 .ConfigureServices(services => services
                     .AddResponseCompression()
-                    .AddMemoryCache()
+                    .AddMemoryCache()                    
                     .AddSignalR())
-                .ConfigureLogging(builder =>
-                    builder.AddProxy(Logger))
+                .ConfigureLogging(builder => builder
+                    .AddProxy(Logger)                    
+                    )
+                    
                 .Build();
-
+            
             var msgHandlers = RegisterMessageHandlers();
             hubContext = host.Services.GetService<IHubContext<MessageHub>>();
 
@@ -88,7 +90,7 @@ namespace ThinkingHome.Plugins.WebServer
         }
 
         public override void StartPlugin()
-        {
+        {            
             // важно запускать Start вместо Run, чтобы оно не лезло напрямую в консоль
             host.Start();
         }
