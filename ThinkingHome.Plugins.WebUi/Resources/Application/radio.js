@@ -21,10 +21,16 @@ var Radio = lib.common.ApplicationBlock.extend({
 
     openConnection: function () {
         var onDisconnect = this.bind('onDisconnect');
-        var connection = this.connection = new lib.signalrClient.HubConnection(this.route);
+
+        const connection = new lib.signalrClient.HubConnectionBuilder()
+            .withUrl(this.route)
+            .configureLogging(lib.signalrClient.LogLevel.Information)
+            .build();
 
         connection.on(this.clientMethod, this.bind('onMessage'));
+
         connection.onClosed = onDisconnect;
+        connection.onDisconnect = onDisconnect;
 
         connection.start().catch(onDisconnect);
     },
@@ -37,10 +43,12 @@ var Radio = lib.common.ApplicationBlock.extend({
 
     onMessage: function (message) {
         this.trigger(message.channel, message);
+        console.log(message);
     },
 
     sendMessage: function (channel, data) {
         this.connection && this.connection.invoke(this.serverMethod, channel, data);
+        console.log(channel, data);
     }
 });
 

@@ -7,7 +7,7 @@ namespace ThinkingHome.Plugins.WebServer.Messages
     public static class MessageHubExtensions
     {
         public static Task Send(this IHubContext<MessageHub> context, string channel, object data)
-        {
+        {          
             return MessageHub.InternalSend(context.Clients, channel, data);
         }
     }

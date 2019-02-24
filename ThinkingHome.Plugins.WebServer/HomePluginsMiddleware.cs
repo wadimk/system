@@ -40,7 +40,7 @@ namespace ThinkingHome.Plugins.WebServer
                 await context.Response.WriteAsync("OK");
             }
 
-            if (handlers.ContainsKey(path))
+            if (handlers.ContainsKey(path) && path != "/hub")
             {
                 logger.LogInformation($"invoke http handler: {path};");
 

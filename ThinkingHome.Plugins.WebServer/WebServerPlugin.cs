@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,24 +24,30 @@ namespace ThinkingHome.Plugins.WebServer
         {
             var port = Configuration.GetValue("port", 41831);
             var handlers = RegisterHandlers();
-
+                       
             host = new WebHostBuilder()
                 .UseKestrel()                
-                .UseUrls($"http://+:{port}")                
+                .UseUrls($"http://*:{port}")
                 .Configure(app => app
-                    .UseSignalR(routes => routes.MapHub<MessageHub>(new PathString($"{MessageHub.HUB_ROUTE}")))                    
+                    .UseSignalR(routes => routes.MapHub<MessageHub>(MessageHub.HUB_ROUTE))                    
                     .UseResponseCompression()
-                    .UseStatusCodePages()                    
-                    .UseMiddleware<HomePluginsMiddleware>(handlers))
-                .ConfigureServices(services => services
-                    .AddResponseCompression()
-                    .AddMemoryCache()                    
-                    .AddSignalR())
-                .ConfigureLogging(builder => builder
-                    .AddProxy(Logger)                    
+                    .UseStatusCodePages()
+                    .UseMiddleware<HomePluginsMiddleware>(handlers)
                     )
-                    
-                .Build();
+                .ConfigureServices(services =>
+                {
+                    services.AddResponseCompression();
+                    services.AddMemoryCache();
+
+                    services.AddSignalR(configure => {
+                        configure.EnableDetailedErrors = true;
+                        });
+
+
+                })
+                .ConfigureLogging(builder => builder
+                    .AddProxy(Logger))
+                    .Build();
             
             var msgHandlers = RegisterMessageHandlers();
             hubContext = host.Services.GetService<IHubContext<MessageHub>>();

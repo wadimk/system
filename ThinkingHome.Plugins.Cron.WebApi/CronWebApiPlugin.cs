@@ -30,23 +30,20 @@ namespace ThinkingHome.Plugins.Cron.WebApi
         {
             var database = Context.Require<DatabasePlugin>();
 
-            if (database.IsInitialized)
+            if (!database.IsInitialized) { return null; }
+                        
+            using (var session = database.OpenSession())
             {
-                using (var session = database.OpenSession())
-                {
-                    var list = session.Set<CronTask>()
-                        .OrderBy(e => e.Month)
-                        .ThenBy(e => e.Day)
-                        .ThenBy(e => e.Hour)
-                        .ThenBy(e => e.Minute)
-                        .Select(ToApiModel)
-                        .ToArray();
+                var list = session.Set<CronTask>()
+                    .OrderBy(e => e.Month)
+                    .ThenBy(e => e.Day)
+                    .ThenBy(e => e.Hour)
+                    .ThenBy(e => e.Minute)
+                    .Select(ToApiModel)
+                    .ToArray();
 
-                    return list;
-                }
+                return list;
             }
-
-            return new CronTask();
         }
 
         [WebApiMethod("/api/cron/web-api/get")]
@@ -54,7 +51,11 @@ namespace ThinkingHome.Plugins.Cron.WebApi
         {
             var id = request.GetRequiredGuid("id");
 
-            using (var session = Context.Require<DatabasePlugin>().OpenSession())
+            var database = Context.Require<DatabasePlugin>();
+
+            if (!database.IsInitialized) { return null; }
+
+            using (var session = database.OpenSession())
             {
                 var task = session.Set<CronTask>().Single(x => x.Id == id);
                 
@@ -74,7 +75,11 @@ namespace ThinkingHome.Plugins.Cron.WebApi
             var minute = request.GetInt32("minute");
             var enabled = request.GetRequiredBool("enabled");
 
-            using (var session = Context.Require<DatabasePlugin>().OpenSession())
+            var database = Context.Require<DatabasePlugin>();
+
+            if (!database.IsInitialized) { return null; }
+
+            using (var session = database.OpenSession())
             {
                 CronTask task;
 
@@ -109,7 +114,11 @@ namespace ThinkingHome.Plugins.Cron.WebApi
         {
             var id = request.GetRequiredGuid("id");
 
-            using (var session = Context.Require<DatabasePlugin>().OpenSession())
+            var database = Context.Require<DatabasePlugin>();
+
+            if (!database.IsInitialized) { return null; }
+
+            using (var session = database.OpenSession())
             {
                 var task = session.Set<CronTask>().Single(s => s.Id == id);
 

@@ -55,6 +55,7 @@ namespace ThinkingHome.Plugins.WebUi
 
     // bootstrap
     [CssResource("/vendor/css/bootstrap.css", "ThinkingHome.Plugins.WebUi.Resources.Vendor.css.bootstrap.min.css")]
+    [JavaScriptResource("/vendor/css/bootstrap.min.css.map", "ThinkingHome.Plugins.WebUi.Resources.Vendor.css.bootstrap.min.css.map")]
 
     // font awesome
     [CssResource("/vendor/css/font-awesome.css", "ThinkingHome.Plugins.WebUi.Resources.Vendor.css.font-awesome.min.css")]

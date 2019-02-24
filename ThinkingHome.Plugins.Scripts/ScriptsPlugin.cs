@@ -102,7 +102,11 @@ namespace ThinkingHome.Plugins.Scripts
         {
             try
             {
-                using (var session = Context.Require<DatabasePlugin>().OpenSession())
+                var database = Context.Require<DatabasePlugin>();
+
+                if (!database.IsInitialized) { return null; }
+
+                using (var session = database.OpenSession())
                 {
                     var script = session.Set<UserScript>().Single(s => s.Name == name);
                     return CreateScriptDelegate(script.Name, script.Body);

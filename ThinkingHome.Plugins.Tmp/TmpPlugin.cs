@@ -169,7 +169,11 @@ namespace ThinkingHome.Plugins.Tmp
         [WebApiMethod("/api/tmp/add-schedule")]
         public object AddTimer(HttpRequestParams requestParams)
         {
-            using (var db = Context.Require<DatabasePlugin>().OpenSession())
+            var database = Context.Require<DatabasePlugin>();
+
+            if (!database.IsInitialized) { return null; }
+
+            using (var db = database.OpenSession())
             {
                 var time = DateTime.Now.AddMinutes(1);
 
@@ -206,7 +210,11 @@ namespace ThinkingHome.Plugins.Tmp
         [WebApiMethod("/api/tmp/pigs")]
         public object TmpHandlerMethod43(HttpRequestParams requestParams)
         {
-            using (var db = Context.Require<DatabasePlugin>().OpenSession())
+            var database = Context.Require<DatabasePlugin>();
+
+            if (!database.IsInitialized) { return null; }
+
+            using (var db = database.OpenSession())
             {
                 return db.Set<SmallPig>()
                     .Select(pig => new { id = pig.Id, name = pig.Name, size = pig.Size })
@@ -227,7 +235,7 @@ namespace ThinkingHome.Plugins.Tmp
         public Scripts.Buffer GetTestBuffer()
         {
             var content = Guid.NewGuid().ToString();
-            var bytes = System.Text.Encoding.UTF8.GetBytes(content);
+            var bytes = Encoding.UTF8.GetBytes(content);
 
             return new Scripts.Buffer(bytes);
         }
