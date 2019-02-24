@@ -7,6 +7,7 @@ using ThinkingHome.NooLite;
 using ThinkingHome.Plugins.Scripts;
 using ThinkingHome.Plugins.Scripts.Attributes;
 using ThinkingHome.Plugins.Timer;
+using ThinkingHome.Plugins.WebServer;
 
 namespace ThinkingHome.Plugins.NooLite
 {
@@ -93,6 +94,8 @@ namespace ThinkingHome.Plugins.NooLite
             Context.Require<ScriptsPlugin>()
                 .EmitScriptEvent("noolite:data:received", (byte)cmd.Command, cmd.Channel,
                     cmd.DataFormat, cmd.Data1, cmd.Data2, cmd.Data3, cmd.Data4);
+
+            
         }
 
         private void OnReceiveMicroclimateData(object obj, MicroclimateData data)
@@ -101,6 +104,8 @@ namespace ThinkingHome.Plugins.NooLite
 
             Context.Require<ScriptsPlugin>()
                 .EmitScriptEvent("noolite:microclimate-data:received", data.Channel, data.Temperature, data.Humidity, data.LowBattery);
+
+            Context.Require<WebServerPlugin>().Send("mi-mi-mi", data.ToJson());
         }
 
         #endregion
