@@ -61,7 +61,7 @@ var Section = lib.common.AppSection.extend({
     },
 
     displayPage: function(args) {
-        var view = this.view = new LayoutView({
+        var view = this.view = new View({
             subscriptions: args[0],
             scripts: args[1]
         });

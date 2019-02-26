@@ -71,7 +71,7 @@ namespace ThinkingHome.Plugins.WebUi
     [JavaScriptResource("/vendor/js/backbone.js", "ThinkingHome.Plugins.WebUi.Resources.Vendor.js.backbone.min.js", Alias = "backbone")]
     [JavaScriptResource("/vendor/js/backbone.syphon.js", "ThinkingHome.Plugins.WebUi.Resources.Vendor.js.backbone.syphon.min.js", Alias = "syphon")]
     [JavaScriptResource("/vendor/js/backbone.radio.js", "ThinkingHome.Plugins.WebUi.Resources.Vendor.js.backbone.radio.min.js", Alias = "backbone.radio")]
-    [JavaScriptResource("/vendor/js/marionette.js", "ThinkingHome.Plugins.WebUi.Resources.Vendor.js.marionette.min.js", Alias = "marionette")]
+    [JavaScriptResource("/vendor/js/marionette.js", "ThinkingHome.Plugins.WebUi.Resources.Vendor.js.backbone.marionette.min.js", Alias = "marionette")]
     [JavaScriptResource("/vendor/js/handlebars.js", "ThinkingHome.Plugins.WebUi.Resources.Vendor.js.handlebars.min.js", Alias = "handlebars")]
     [JavaScriptResource("/vendor/js/moment.js", "ThinkingHome.Plugins.WebUi.Resources.Vendor.js.moment.min.js", Alias = "moment")]
     [JavaScriptResource("/vendor/js/signalr-client.js", "ThinkingHome.Plugins.WebUi.Resources.Vendor.js.signalr-client.min.js", Alias = "signalr-client")]

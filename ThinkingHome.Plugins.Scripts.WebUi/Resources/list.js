@@ -48,7 +48,7 @@ var LayoutView = lib.marionette.View.extend({
 
 var Section = lib.common.AppSection.extend({
     start: function() {
-        this.view = new LayoutView();
+        this.view = new View();
         this.listenTo(this.view, 'scripts:create', this.bind('addScript'));
 
         this.application.setContentView(this.view);
