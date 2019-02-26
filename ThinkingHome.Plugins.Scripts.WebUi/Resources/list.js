@@ -47,8 +47,8 @@ var LayoutView = lib.marionette.View.extend({
 //#endregion
 
 var Section = lib.common.AppSection.extend({
-    start: function() {
-        this.view = new View();
+    start: function () {
+        this.view = new LayoutView();
         this.listenTo(this.view, 'scripts:create', this.bind('addScript'));
 
         this.application.setContentView(this.view);
@@ -79,8 +79,8 @@ var Section = lib.common.AppSection.extend({
         var scriptId = view.model.get('id');
         lib.ajax.getJSON('/api/scripts/web-api/execute', { id: scriptId })
             .then(
-                function() { alert(lang.get('The script has been executed.')); },
-                function(err) { alert(err.message); });
+                function () { alert(lang.get('The script has been executed.')); },
+                function (err) { alert(err.message); });
     }
 });
 
