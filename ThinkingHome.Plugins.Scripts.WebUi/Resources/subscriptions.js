@@ -33,7 +33,7 @@ var LayoutView = lib.marionette.View.extend({
     triggers: {
         'click .js-btn-add-subscription': 'subscription:add'
     },
-    onRender: function() {
+    onRender: function () {
 
         // script list
         lib.form.setOptions(this.ui.scriptList, this.getOption('scripts'));
@@ -41,7 +41,7 @@ var LayoutView = lib.marionette.View.extend({
         // subscriptions table
         var subscriptionList = new SubscriptionListView({
             collection: this.getOption('subscriptions'),
-            onChildviewSubscriptionDelete: function(childView) {
+            onChildviewSubscriptionDelete: function (childView) {
                 var id = childView.model.get('id');
                 this.trigger('subscription:delete', id);
             }.bind(this)
@@ -53,15 +53,15 @@ var LayoutView = lib.marionette.View.extend({
 
 
 var Section = lib.common.AppSection.extend({
-    start: function() {
+    start: function () {
         return Promise.all([
-                lib.ajax.loadModel('/api/scripts/web-api/subscription/list', lib.backbone.Collection),
-                lib.ajax.loadModel('/api/scripts/web-api/list', lib.backbone.Collection)])
+            lib.ajax.loadModel('/api/scripts/web-api/subscription/list', lib.backbone.Collection),
+            lib.ajax.loadModel('/api/scripts/web-api/list', lib.backbone.Collection)])
             .then(this.bind('displayPage'));
     },
 
-    displayPage: function(args) {
-        var view = this.view = new View({
+    displayPage: function (args) {
+        var view = this.view = new LayoutView({
             subscriptions: args[0],
             scripts: args[1]
         });
@@ -72,7 +72,7 @@ var Section = lib.common.AppSection.extend({
         this.application.setContentView(view);
     },
 
-    addSubscription: function() {
+    addSubscription: function () {
         var ui = this.view.ui;
         var scriptId = ui.scriptList.val();
         var eventAlias = ui.eventAlias.val();
@@ -83,18 +83,18 @@ var Section = lib.common.AppSection.extend({
             .catch(alert);
     },
 
-    deleteSubscription: function(id) {
+    deleteSubscription: function (id) {
         confirm(lang.get('Subscription will be deleted. Continue?')) && lib.ajax
             .postJSON('/api/scripts/web-api/subscription/delete', { subscriptionId: id })
             .then(this.bind('updateList'))
             .catch(alert);
     },
 
-    updateList: function() {
+    updateList: function () {
         var subscriptions = this.view.getOption('subscriptions');
 
         return lib.ajax.loadModel('/api/scripts/web-api/subscription/list', lib.backbone.Collection)
-            .then(function(data) {
+            .then(function (data) {
                 subscriptions.reset(data.toJSON());
             });
     }
