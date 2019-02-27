@@ -9,7 +9,7 @@ define([
     'signalr-client'
 ], function(marionette, backbone, syphon, handlebars, moment, _, $, signalrClient) {
 
-    var applicationBlock = marionette.Object.extend({
+    var applicationBlock = marionette.MnObject.extend({
         bind: function (fn) {
             var func = _.isString(fn) ? this[fn] : fn,
                 args = [].slice.call(arguments, 1),
