@@ -23,4 +23,4 @@ ENV plugins:ThinkingHome.Plugins.Database.DatabasePlugin:connectionString host=p
 EXPOSE 8080
 
 # при старте контейнера поднимаем наше приложение
-CMD ["./ThinkingHome.Console"]
+CMD ["dotnet","ThinkingHome.Console.dll"]
