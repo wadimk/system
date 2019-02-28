@@ -10,7 +10,6 @@ namespace ThinkingHome.Plugins.Scripts.WebUi
     [JavaScriptResource("/static/scripts/web-ui/editor.js", "ThinkingHome.Plugins.Scripts.WebUi.Resources.editor.js")]
 
     [AppSection(SectionType.System, "Script events", "/static/scripts/web-ui/subscriptions.js", "ThinkingHome.Plugins.Scripts.WebUi.Resources.subscriptions.js", SortOrder = 22)]
-    [AppSection(SectionType.System, "Script events", "/static/scripts/web-ui/subscriptions1.js", "ThinkingHome.Plugins.Scripts.WebUi.Resources.subscriptions.js", SortOrder = 23)]
 
     // templates
     [TemplateResource("/static/scripts/web-ui/list.tpl", "ThinkingHome.Plugins.Scripts.WebUi.Resources.list.tpl")]

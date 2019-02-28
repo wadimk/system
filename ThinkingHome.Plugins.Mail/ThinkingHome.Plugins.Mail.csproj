@@ -9,7 +9,7 @@
     <ProjectReference Include="..\ThinkingHome.Plugins.Scripts\ThinkingHome.Plugins.Scripts.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="MailKit" Version="2.1.2" />
+    <PackageReference Include="MailKit" Version="2.1.3" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
