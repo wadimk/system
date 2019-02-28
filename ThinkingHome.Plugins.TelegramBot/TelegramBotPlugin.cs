@@ -39,6 +39,7 @@ namespace ThinkingHome.Plugins.TelegramBot
         private void OnReceiveError(object sender, ReceiveErrorEventArgs e)
         {
             Logger.LogError(e.ApiRequestException, "telegram bot API request error");
+            bot.StopReceiving();
         }
 
         public override void StartPlugin()
