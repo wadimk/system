@@ -23,16 +23,20 @@ var SectionCollection = lib.backbone.Collection.extend({
 var ItemView = lib.marionette.View.extend({
     template: lib.handlebars.compile(itemTemplate),
     tagName: 'li',
-    className: 'th-list-item',
+    className: 'th-list-item',  
     triggers: {
-        'click .js-section-link': 'navigate'
+	    'click .js-section-link': 'navigate'
     }
+
 });
 
 var ListView = lib.marionette.CollectionView.extend({
-    childView: ItemView,
-    className: 'list-unstyled',
-    tagName: 'ul'
+	childView: ItemView,
+	className: 'list-unstyled',
+    tagName: 'ul',
+	childViewTriggers: {
+        'navigate': 'childview:navigate'
+	}
 });
 
 var LayoutView = lib.marionette.View.extend({
@@ -63,7 +67,7 @@ var Section = lib.common.AppSection.extend({
     },
     displayList: function (items) {
         var listView = new ListView({ collection: items });
-        this.listenTo(listView, "childview:navigate", this.bind('onSectionSelect'));
+        this.listenTo(listView, 'childview:navigate', this.bind('onSectionSelect'));
 
         this.view.showChildView('list', listView);
     },
@@ -71,6 +75,7 @@ var Section = lib.common.AppSection.extend({
         var url = childView.model.get('url');
         this.application.navigate(url);
     }
+
 });
 
 module.exports = Section;
