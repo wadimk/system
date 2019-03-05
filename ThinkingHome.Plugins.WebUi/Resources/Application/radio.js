@@ -28,17 +28,14 @@ var Radio = lib.common.ApplicationBlock.extend({
             .build();
 
         connection.on(this.clientMethod, this.bind('onMessage'));
-
-        connection.onClosed = onDisconnect;
-        connection.onDisconnect = onDisconnect;
+        
+        connection.onclose(onDisconnect);
 
         connection.start().catch(onDisconnect);
     },
 
-    onDisconnect: function () {
-        if (this.connection) {
-            setTimeout(this.bind("openConnection"), this.reconnectionTimeout);
-        }
+    onDisconnect: function (e) {
+	    this.openConnection();
     },
 
     onMessage: function (message) {
