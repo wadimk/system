@@ -42,7 +42,7 @@ namespace ThinkingHome.Plugins.WebServer
 
             if (handlers.ContainsKey(path) && path != "/hub")
             {
-                logger.LogInformation($"invoke http handler: {path};");
+                logger.LogInformation($"{context.Connection.Id} invoke http handler: {path};");
 
                 try
                 {
@@ -73,8 +73,12 @@ namespace ThinkingHome.Plugins.WebServer
                 }
                 catch (Exception ex)
                 {
-                    logger.LogInformation(0, ex, $"http handler error: {path}");
-                    context.Response.StatusCode = 500;
+                    logger.LogInformation(0, ex, $"{context.Connection.Id} http handler error: {path}");
+
+                    if (!context.Response.HasStarted)
+                    {
+                        context.Response.StatusCode = 500;
+                    }
                 }
             }
             else
