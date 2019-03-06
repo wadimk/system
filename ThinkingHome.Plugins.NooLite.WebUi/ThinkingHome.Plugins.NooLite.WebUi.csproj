@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\editor.tpl" />
+    <None Remove="Resources\list-item.tpl" />
+    <None Remove="Resources\list.tpl" />
+    <None Remove="Resources\noolite.js" />
+    <None Remove="Resources\styles.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\editor.tpl" />
+    <EmbeddedResource Include="Resources\list-item.tpl" />
+    <EmbeddedResource Include="Resources\noolite.js" />
+    <EmbeddedResource Include="Resources\list.tpl" />
+    <EmbeddedResource Include="Resources\styles.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ThinkingHome.Plugins.WebUi.Apps\ThinkingHome.Plugins.WebUi.Apps.csproj" />
+  </ItemGroup>
+
+</Project>
