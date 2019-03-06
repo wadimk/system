@@ -65,31 +65,19 @@ var Section = lib.common.AppSection.extend({
 	},
 	onNooliteOn: function (childView) {
         var channel = childView.model.get('Channel');
-
-        var result = lib.ajax.loadModel(`/api/noolite/web-api/channel?ch=${channel}&command=on`);
-
-        console.log(result);
+        this.application.radio.sendMessage('noolite:command', `on-${channel}`);
 	},
 	onNooliteOff: function (childView) {
-		var channel = childView.model.get('Channel');
-
-        var result = lib.ajax.loadModel(`/api/noolite/web-api/channel?ch=${channel}&command=off`);
-
-		console.log(channel);
+        var channel = childView.model.get('Channel');
+        this.application.radio.sendMessage('noolite:command', `off-${channel}`);
 	},
 	onNooliteBind: function (childView) {
 		var channel = childView.model.get('Channel');
-
-		var result = lib.ajax.loadModel(`/api/noolite/web-api/channel?ch=${channel}&command=bind`);
-
-		console.log(channel);
+		this.application.radio.sendMessage('noolite:command', `bind-${channel}`);
 	},
 	onNooliteUnbind: function (childView) {
 		var channel = childView.model.get('Channel');
-
-		var result = lib.ajax.loadModel(`/api/noolite/web-api/channel?ch=${channel}&command=unbind`);
-
-		console.log(channel);
+		this.application.radio.sendMessage('noolite:command', `unbind-${channel}`);
 	}
 });
 
