@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ThinkingHome.Plugins.NooLite\ThinkingHome.Plugins.NooLite.csproj" />
     <ProjectReference Include="..\ThinkingHome.Plugins.WebUi.Apps\ThinkingHome.Plugins.WebUi.Apps.csproj" />
   </ItemGroup>
 

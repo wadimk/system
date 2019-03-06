@@ -1,5 +1,2 @@
-<h1>{{lang 'Cron tasks'}}</h1>
-<p>
-    <a href="#" class="btn btn-secondary js-task-create">{{lang 'Create'}}</a>
-</p>
+<h1>{{lang 'Noolite settings'}}</h1>
 <div class="js-task-list"></div>

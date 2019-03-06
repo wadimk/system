@@ -37,7 +37,7 @@ var Section = lib.common.AppSection.extend({
 		this.application.setContentView(this.view);
 
 		return lib.ajax
-			.loadModel('/api/cron/web-api/list', lib.backbone.Collection)
+			.loadModel('/api/noolite/web-api/list', lib.backbone.Collection)
 			.then(this.bind('displayList'));
 	},
 
