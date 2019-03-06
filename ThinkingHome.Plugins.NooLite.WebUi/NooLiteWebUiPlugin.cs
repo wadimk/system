@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Channels;
 using Microsoft.Extensions.Logging;
 using ThinkingHome.Core.Plugins;
 using ThinkingHome.Plugins.WebServer.Attributes;

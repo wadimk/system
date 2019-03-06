@@ -1,2 +1,1 @@
- {{#isnull Name}}*{{else}}{{Name}}{{/isnull}}
-
+ {{#isnull Name}}*{{else}}{{Name}}{{/isnull}} <a href="#" class="btn btn-primary js-channel-on">on</a> <a href="#" class="btn btn-primary js-channel-off">off</a> <a href="#" class="btn btn-primary js-channel-bind">bind</a> <a href="#" class="btn btn-primary js-channel-unbind">unbind</a>
