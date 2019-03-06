@@ -30,7 +30,6 @@ namespace ThinkingHome.Plugins.NooLite.WebUi
         [WebApiMethod("/api/noolite/web-api/list")]
         public object GetTaskList(HttpRequestParams request)
         {
-            var noolite = Context.Require<NooLitePlugin>();
             var list = new List<NooliteChannel>();
             
             list.Add(new NooliteChannel() { Channel = 0 });
@@ -38,6 +37,46 @@ namespace ThinkingHome.Plugins.NooLite.WebUi
 
             return list;
         }
+
+        [WebApiMethod("/api/noolite/web-api/channel")]
+        public object GetResult(HttpRequestParams request)
+        {
+            var ch = request.GetRequiredByte("ch");
+            var command = request.GetRequiredString("command").ToLower();
+
+            var noolite = Context.Require<NooLitePlugin>();
+            var adapter =  noolite.Open(false);
+
+            switch (command)
+            {
+                case "on":
+                    adapter.On(ch);
+                    break;
+
+                case "off":
+                    adapter.Off(ch);
+                    break;
+
+                case "bind":
+                    adapter.Bind(ch);
+                    break;
+
+                case "unbind":
+                    adapter.UnBind(ch);
+                    break;
+
+                default:
+                    return "error, command is not supported";
+            }
+            
+
+            return $"{ch}: {command}";
+        }
+
+    }
+
+    public class CommandResult
+    {
 
     }
 

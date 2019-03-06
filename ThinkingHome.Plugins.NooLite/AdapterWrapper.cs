@@ -20,6 +20,8 @@ namespace ThinkingHome.Plugins.NooLite
         }
 
         #region scripts API
+        // ReSharper disable once InconsistentNaming
+        public void bind(byte channel) => Bind(channel);
 
         // ReSharper disable once InconsistentNaming
         public void on(byte channel) => On(channel);
@@ -45,6 +47,17 @@ namespace ThinkingHome.Plugins.NooLite
         #endregion
 
         #region plugins API
+
+
+        public void Bind(byte channel)
+        {
+            Exec(a => a.Bind(channel), a => a.BindF(channel));
+        }
+
+        public void UnBind(byte channel)
+        {
+            Exec(a => a.Unbind(channel), a => a.UnbindF(channel));
+        }
 
         public void On(byte channel)
         {

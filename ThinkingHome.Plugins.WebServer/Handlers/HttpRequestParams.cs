@@ -53,6 +53,11 @@ namespace ThinkingHome.Plugins.WebServer.Handlers
             return GetString(name).ParseInt();
         }
 
+        public byte? GetByte(string name)
+        {
+            return Convert.ToByte(GetString(name));
+        }
+
         public Guid? GetGuid(string name)
         {
             return GetString(name).ParseGuid();
@@ -74,6 +79,15 @@ namespace ThinkingHome.Plugins.WebServer.Handlers
             if (string.IsNullOrEmpty(value)) throw new ArgumentException($"parameter {name} is required");
 
             return value;
+        }
+
+        public byte GetRequiredByte(string name)
+        {
+            var value = GetByte(name);
+
+            if (!value.HasValue) throw new ArgumentException($"parameter {name} is required");
+
+            return value.Value;
         }
 
         public int GetRequiredInt32(string name)
