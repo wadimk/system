@@ -35,7 +35,7 @@ var Radio = lib.common.ApplicationBlock.extend({
     },
 
     onDisconnect: function (e) {
-	    this.openConnection();
+	    setTimeout(this.bind("openConnection"), this.reconnectionTimeout);
     },
 
     onMessage: function (message) {

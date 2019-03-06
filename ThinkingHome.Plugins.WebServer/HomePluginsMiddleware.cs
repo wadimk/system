@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Resources;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Caching.Memory;
@@ -71,6 +72,11 @@ namespace ThinkingHome.Plugins.WebServer
 
                     await context.Response.Body.WriteAsync(data, 0, data.Length);
                 }
+                catch (MissingManifestResourceException ex)
+                {
+                    logger.LogInformation(0, ex, $"{context.Connection.Id} http handler error: {path}");
+                    context.Response.StatusCode = 404;
+                }
                 catch (Exception ex)
                 {
                     logger.LogInformation(0, ex, $"{context.Connection.Id} http handler error: {path}");
@@ -80,6 +86,8 @@ namespace ThinkingHome.Plugins.WebServer
                         context.Response.StatusCode = 500;
                     }
                 }
+                
+
             }
             else
             {

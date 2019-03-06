@@ -1,8 +1,8 @@
 var lib = require('lib');
-var lang = require('lang!static/cron/lang.json');
+var lang = require('lang!static/noolite/lang.json');
 
-var layoutTemplate = require('static/cron/web-ui/list.tpl');
-var itemTemplate = require('static/cron/web-ui/list-item.tpl');
+var layoutTemplate = require('static/noolite/web-ui/list.tpl');
+var itemTemplate = require('static/noolite/web-ui/list-item.tpl');
 
 //#region views
 
@@ -10,10 +10,7 @@ var ItemView = lib.marionette.View.extend({
 	template: lib.handlebars.compile(itemTemplate),
 	templateContext: { lang: lang },
 	className: 'th-list-item',
-	tagName: 'li',
-	triggers: {
-		'click .js-task-edit': 'task:edit'
-	}
+	tagName: 'li'
 });
 
 var ListView = lib.marionette.CollectionView.extend({
@@ -27,9 +24,6 @@ var LayoutView = lib.marionette.View.extend({
 	templateContext: { lang: lang },
 	regions: {
 		list: '.js-task-list'
-	},
-	triggers: {
-		'click .js-task-create': 'task:create'
 	}
 });
 
@@ -49,18 +43,8 @@ var Section = lib.common.AppSection.extend({
 
 	displayList: function (items) {
 		var listView = new ListView({ collection: items });
-
-		this.listenTo(listView, 'childview:task:edit', this.bind('editTask'));
+        
 		this.view.showChildView('list', listView);
-	},
-
-	createTask: function () {
-		this.application.navigate('/static/cron/web-ui/editor.js');
-	},
-
-	editTask: function (view) {
-		var taskId = view.model.get('id');
-		this.application.navigate('/static/cron/web-ui/editor.js', taskId);
 	}
 });
 
