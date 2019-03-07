@@ -22,7 +22,7 @@ var Radio = lib.common.ApplicationBlock.extend({
     openConnection: function () {
         var onDisconnect = this.bind('onDisconnect');
 
-        const connection = new lib.signalrClient.HubConnectionBuilder()
+        const connection = this.connection = new lib.signalrClient.HubConnectionBuilder()
             .withUrl(this.route)
             .configureLogging(lib.signalrClient.LogLevel.Information)
             .build();

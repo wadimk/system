@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Channels;
 using Microsoft.Extensions.Logging;
 using ThinkingHome.Core.Plugins;
+using ThinkingHome.Plugins.Timer;
+using ThinkingHome.Plugins.WebServer;
 using ThinkingHome.Plugins.WebServer.Attributes;
 using ThinkingHome.Plugins.WebServer.Handlers;
+using ThinkingHome.Plugins.WebServer.Messages;
 using ThinkingHome.Plugins.WebUi.Apps;
 using ThinkingHome.Plugins.WebUi.Attributes;
 
@@ -43,9 +45,21 @@ namespace ThinkingHome.Plugins.NooLite.WebUi
         {
             var ch = request.GetRequiredByte("ch");
             var command = request.GetRequiredString("command").ToLower();
+            return SendCommand(ch, command);
+        }
 
+        [HubMessageHandler("noolite:command")]
+        public void NooliteMessageHandler(Guid msgId, DateTime timestamp, string channel, object data)
+        {
+            Logger.LogInformation("{0}:{1}:{2}:{3}", msgId, timestamp, channel, data);
+            var array = data.ToString().Split('-');
+            SendCommand(Convert.ToByte(array[1]), array[0]);
+        }
+
+        private string SendCommand(byte ch, string command)
+        {
             var noolite = Context.Require<NooLitePlugin>();
-            var adapter =  noolite.Open(false);
+            var adapter = noolite.Open(false);
 
             switch (command)
             {
@@ -68,10 +82,12 @@ namespace ThinkingHome.Plugins.NooLite.WebUi
                 default:
                     return "error, command is not supported";
             }
-            
+
 
             return $"{ch}: {command}";
+
         }
+
 
     }
 
