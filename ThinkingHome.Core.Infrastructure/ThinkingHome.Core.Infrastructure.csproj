@@ -17,10 +17,6 @@
     <PackageReference Include="Serilog.Extensions.Logging" Version="2.0.2" />
     <PackageReference Include="Serilog.Settings.Configuration" Version="3.0.1" />
     <PackageReference Include="System.Runtime.Loader" Version="4.3.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="TimeZoneConverter">
-      <HintPath>..\..\..\..\.nuget\packages\timezoneconverter\2.5.1\lib\netstandard2.0\TimeZoneConverter.dll</HintPath>
-    </Reference>
+    <PackageReference Include="TimeZoneConverter" Version="2.5.1" />
   </ItemGroup>
 </Project>
