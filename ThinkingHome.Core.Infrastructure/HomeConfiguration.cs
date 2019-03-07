@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using Microsoft.Extensions.Configuration;
 using Serilog;
+using TimeZoneConverter;
 
 namespace ThinkingHome.Core.Infrastructure
 {
@@ -48,6 +49,13 @@ namespace ThinkingHome.Core.Infrastructure
         {
             var cultureName = Configuration["culture"] ?? string.Empty;
             return CultureInfo.GetCultureInfo(cultureName);
+        }
+
+        public TimeZoneInfo GetTimeZone()
+        {
+            var timeZone = Configuration["timezone"] ?? string.Empty;
+
+            return TZConvert.GetTimeZoneInfo(timeZone);
         }
     }
 }

@@ -4,7 +4,6 @@ using Microsoft.Extensions.Logging;
 using ThinkingHome.Core.Plugins;
 using ThinkingHome.Core.Plugins.Utils;
 using ThinkingHome.NooLite;
-using ThinkingHome.NooLite.Internal;
 using ThinkingHome.Plugins.Scripts;
 using ThinkingHome.Plugins.Scripts.Attributes;
 using ThinkingHome.Plugins.Timer;
@@ -106,7 +105,7 @@ namespace ThinkingHome.Plugins.NooLite
             Context.Require<ScriptsPlugin>()
                 .EmitScriptEvent("noolite:microclimate-data:received", data.Channel, data.Temperature, data.Humidity, data.LowBattery);
 
-            Context.Require<WebServerPlugin>().Send("mi-mi-mi", data.ToJson());
+            Context.Require<WebServerPlugin>().Send("noolite:microclimate-data:received", data.ToJson());
         }
 
         #endregion

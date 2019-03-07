@@ -90,9 +90,10 @@ namespace ThinkingHome.Core.Infrastructure
         private void InitLanguage(HomeConfiguration config)
         {
             var culture = config.GetCulture();
+            var timezone = config.GetTimeZone();
 
             logger.LogInformation($"init culture: {culture}");
-
+            
             Thread.CurrentThread.CurrentCulture =
                 Thread.CurrentThread.CurrentUICulture =
                     CultureInfo.DefaultThreadCurrentCulture =
