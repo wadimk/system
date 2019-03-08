@@ -36,6 +36,14 @@ namespace ThinkingHome.Plugins.NooLite.WebUi
             
             list.Add(new NooliteChannel() { Channel = 0 });
             list.Add(new NooliteChannel() { Channel = 1 });
+            list.Add(new NooliteChannel() { Channel = 2 });
+            list.Add(new NooliteChannel() { Channel = 3 });
+            list.Add(new NooliteChannel() { Channel = 4 });
+            list.Add(new NooliteChannel() { Channel = 5 });
+            list.Add(new NooliteChannel() { Channel = 6 });
+            list.Add(new NooliteChannel() { Channel = 7 });
+            list.Add(new NooliteChannel() { Channel = 8 });
+
 
             return list;
         }
