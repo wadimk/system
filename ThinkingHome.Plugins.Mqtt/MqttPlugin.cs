@@ -60,6 +60,8 @@ namespace ThinkingHome.Plugins.Mqtt
             client.ApplicationMessageReceived += client_ApplicationMessageReceived;
 
             handlers = RegisterHandlers();
+
+            Context.Require<ScriptsPlugin>().RegisterScriptEvent("mqtt:message:received");
         }
 
         public override void StartPlugin()

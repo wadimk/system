@@ -32,6 +32,8 @@ namespace ThinkingHome.Plugins.Cron
             schedule = new List<CronScheduleItem>();
 
             handlers = RegisterHandlers();
+
+            Context.Require<ScriptsPlugin>().RegisterScriptEvent("cron:task:started");
         }
 
         [DbModelBuilder]

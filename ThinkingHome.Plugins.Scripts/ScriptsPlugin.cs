@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -14,6 +15,9 @@ namespace ThinkingHome.Plugins.Scripts
     public class ScriptsPlugin : PluginBase
     {
         private object host;
+        private List<string> scriptEvents = new List<string>();
+
+        public List<string> ScriptEvents => scriptEvents;
 
         private readonly ObjectRegistry<Delegate> methods = new ObjectRegistry<Delegate>();
 
@@ -60,6 +64,10 @@ namespace ThinkingHome.Plugins.Scripts
             return CreateScriptDelegateByName(name)(args);
         }
 
+        public void RegisterScriptEvent(string eventAlias)
+        {
+            scriptEvents.Add(eventAlias);
+        }
         public void EmitScriptEvent(string eventAlias, params object[] args)
         {
             var database = Context.Require<DatabasePlugin>();

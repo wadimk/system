@@ -130,6 +130,13 @@ namespace ThinkingHome.Plugins.Scripts.WebApi
 
         #region script event
 
+        [WebApiMethod("/api/scripts/web-api/scriptevent/list")]
+        public object GetScripteventList(HttpRequestParams request)
+        {
+            return Context.Require<ScriptsPlugin>().ScriptEvents;
+        }
+
+
         [WebApiMethod("/api/scripts/web-api/subscription/list")]
         public object GetSubscriptionList(HttpRequestParams request)
         {

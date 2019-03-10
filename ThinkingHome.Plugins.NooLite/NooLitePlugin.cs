@@ -40,6 +40,7 @@ namespace ThinkingHome.Plugins.NooLite
             device.ReceiveMicroclimateData += OnReceiveMicroclimateData;
             device.Error += OnError;
 
+
             wrapper = new AdapterWrapper(false, device, Logger);
             wrapperF = new AdapterWrapper(true, device, Logger);
 
@@ -67,6 +68,10 @@ namespace ThinkingHome.Plugins.NooLite
             }
 
             #endregion
+
+            Context.Require<ScriptsPlugin>().RegisterScriptEvent("noolite:data:received");
+            Context.Require<ScriptsPlugin>().RegisterScriptEvent("noolite:microclimate-data:received");
+            
         }
 
         #region events
