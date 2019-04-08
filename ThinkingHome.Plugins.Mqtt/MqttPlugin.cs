@@ -24,7 +24,7 @@ namespace ThinkingHome.Plugins.Mqtt
         private const int DEFAULT_PORT = 1883;
 
         private bool reconnectEnabled;
-        static readonly MqttFactory Factory = new MqttFactory();
+        
         private IMqttClientOptions options;
 
         private List<MqttMessageHandlerDelegate> handlers;
@@ -46,6 +46,7 @@ namespace ThinkingHome.Plugins.Mqtt
 
             Logger.LogInformation($"init MQTT client: {Host}:{Port} (ID: {{{clientId}}})");
 
+            var Factory = new MqttFactory();
 
             options = new MqttClientOptionsBuilder()
                 .WithTcpServer(Host, Port)

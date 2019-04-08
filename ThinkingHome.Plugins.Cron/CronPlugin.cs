@@ -33,7 +33,7 @@ namespace ThinkingHome.Plugins.Cron
 
             handlers = RegisterHandlers();
 
-            Context.Require<ScriptsPlugin>().RegisterScriptEvent("cron:task:started");
+            Context.Require<ScriptsPlugin>().RegisterScriptEvent("cron:task:started", typeof(Guid));
         }
 
         [DbModelBuilder]

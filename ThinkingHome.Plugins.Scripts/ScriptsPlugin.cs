@@ -15,9 +15,12 @@ namespace ThinkingHome.Plugins.Scripts
     public class ScriptsPlugin : PluginBase
     {
         private object host;
-        private List<string> scriptEvents = new List<string>();
 
-        public List<string> ScriptEvents => scriptEvents;
+        public delegate void EmitScriptEvent1(string eventAlias, params object[] args);
+
+        private List<ScriptEvent> scriptEvents = new List<ScriptEvent>();
+
+        public List<ScriptEvent> ScriptEvents => scriptEvents;
 
         private readonly ObjectRegistry<Delegate> methods = new ObjectRegistry<Delegate>();
 
@@ -64,9 +67,9 @@ namespace ThinkingHome.Plugins.Scripts
             return CreateScriptDelegateByName(name)(args);
         }
 
-        public void RegisterScriptEvent(string eventAlias)
+        public void RegisterScriptEvent(string eventAlias, params object[] args)
         {
-            scriptEvents.Add(eventAlias);
+            scriptEvents.Add(new ScriptEvent() { Event = eventAlias, Args = args});
         }
         public void EmitScriptEvent(string eventAlias, params object[] args)
         {
@@ -141,5 +144,11 @@ namespace ThinkingHome.Plugins.Scripts
         }
 
         #endregion
+    }
+
+    public class ScriptEvent
+    {
+        public string Event { get; set; }
+        public object[] Args { get; set; }
     }
 }
