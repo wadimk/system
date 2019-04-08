@@ -1,4 +1,6 @@
-﻿using ThinkingHome.Core.Plugins;
+﻿using System;
+using System.Collections.Generic;
+using ThinkingHome.Core.Plugins;
 using ThinkingHome.Core.Plugins.Utils;
 using ThinkingHome.Plugins.Cron.Model;
 using ThinkingHome.Plugins.Database;
@@ -27,8 +29,13 @@ namespace ThinkingHome.Plugins.Database.Backup
 
             using (var session = database.OpenSession())
             {
+                var list = new List<Object>();
                 var tasks = session.Set<CronTask>();
-                return tasks.ToJson();
+
+               list.AddRange(tasks);
+
+
+                return list.ToJson();
 
             }            
         }
