@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ThinkingHome.Core.Plugins\ThinkingHome.Core.Plugins.csproj" />
+    <ProjectReference Include="..\ThinkingHome.Plugins.Cron\ThinkingHome.Plugins.Cron.csproj" />
+    <ProjectReference Include="..\ThinkingHome.Plugins.Database\ThinkingHome.Plugins.Database.csproj" />
+    <ProjectReference Include="..\ThinkingHome.Plugins.WebServer\ThinkingHome.Plugins.WebServer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.EntityFrameworkCore">
+      <HintPath>..\..\..\..\.nuget\packages\microsoft.entityframeworkcore\2.2.3\lib\netstandard2.0\Microsoft.EntityFrameworkCore.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

@@ -16,6 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ThinkingHome.Core.Infrastructure\ThinkingHome.Core.Infrastructure.csproj" />
     <ProjectReference Include="..\ThinkingHome.Core.Plugins\ThinkingHome.Core.Plugins.csproj" />
+    <ProjectReference Include="..\ThinkingHome.Plugins.Database.Backup\ThinkingHome.Plugins.Database.Backup.csproj" />
     <ProjectReference Include="..\ThinkingHome.Plugins.Database\ThinkingHome.Plugins.Database.csproj" />
     <ProjectReference Include="..\ThinkingHome.Plugins.Mail\ThinkingHome.Plugins.Mail.csproj" />
     <ProjectReference Include="..\ThinkingHome.Plugins.Mqtt\ThinkingHome.Plugins.Mqtt.csproj" />
