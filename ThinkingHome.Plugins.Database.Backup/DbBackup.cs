@@ -32,12 +32,15 @@ namespace ThinkingHome.Plugins.Database.Backup
             {
                 var entityTypes = session.Model.GetEntityTypes().Select(t => t.ClrType).ToList();
 
+                var list = new List<Object>();
+
                 foreach (var entityType in entityTypes)
                 {
+                    var data = session.Find(entityType);
                     
                 }
 
-                var list = new List<Object>();
+                
                 var tasks = session.Set<CronTask>();
 
                list.AddRange(tasks);
