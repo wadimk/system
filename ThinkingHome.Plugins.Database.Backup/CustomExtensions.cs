@@ -4,12 +4,11 @@ using Microsoft.EntityFrameworkCore.Internal;
 
 namespace Microsoft.EntityFrameworkCore
 {
-    public static partial class CustomExtensions
+    public static class DbContextExtensions
     {
-        public static IQueryable Query(this DbContext context, string entityName) =>
-            context.Query(context.Model.FindEntityType(entityName).ClrType);
-
-        public static IQueryable Query(this DbContext context, Type entityType) =>
-            (IQueryable)((IDbSetCache)context).GetOrAddSet(context.GetDependencies().SetSource, entityType);
+        public static IQueryable<Object> Set(this DbContext _context, Type t)
+        {
+            return (IQueryable<Object>)_context.GetType().GetMethod("Set").MakeGenericMethod(t).Invoke(_context, null);
+        }
     }
 }
