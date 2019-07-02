@@ -1,6 +1,4 @@
 FROM mcr.microsoft.com/dotnet/core/sdk:3.0-buster AS build
-
-# copy csproj and restore as distinct layers
 WORKDIR /system
 COPY . .
 RUN dotnet publish -c Release -o bin/publish /p:LinkDuringPublish=true
