@@ -19,7 +19,10 @@ var ItemView = lib.marionette.View.extend({
 var ListView = lib.marionette.CollectionView.extend({
 	childView: ItemView,
 	className: 'list-unstyled',
-	tagName: 'ul'
+    tagName: 'ul',
+	childViewTriggers: {
+        'task:edit': 'childview:task:edit'
+	}
 });
 
 var LayoutView = lib.marionette.View.extend({

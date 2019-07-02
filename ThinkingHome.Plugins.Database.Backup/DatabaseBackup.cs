@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Esprima.Ast;
+using Microsoft.EntityFrameworkCore;
 using ThinkingHome.Core.Plugins;
 using ThinkingHome.Core.Plugins.Utils;
 using ThinkingHome.Plugins.Cron.Model;
@@ -46,18 +48,11 @@ namespace ThinkingHome.Plugins.Database.Backup
 
                 foreach (var entityType in entityTypes)
                 {
-                    var data = session.Find(entityType);
-                    
+                    var data = session.Set(entityType);
+                    list.AddRange(data);
                 }
 
-                
-                var tasks = session.Set<CronTask>();
-
-               list.AddRange(tasks);
-
-
                 return list.ToJson();
-
             }            
         }
     }
