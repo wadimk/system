@@ -3,9 +3,11 @@ WORKDIR /system
 COPY . .
 RUN dotnet publish -c Release -r linux-arm -o bin/publish /p:LinkDuringPublish=true
 
-FROM mcr.microsoft.com/dotnet/core/runtime-deps:3.0-buster-slim-arm32v7 AS runtime
+FROM mcr.microsoft.com/dotnet/core/runtime:3.0-buster-slim-arm32v7 AS runtime
 LABEL Author="Vadim Kosin <vkosin@outlook.com>"
 WORKDIR /system
 COPY --from=build /system/ThinkingHome.Console/bin/publish .
+
+EXPOSE 8080
 
 CMD ["./ThinkingHome.Console"]
