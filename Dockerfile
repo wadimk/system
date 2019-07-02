@@ -5,7 +5,7 @@ WORKDIR /system
 COPY . .
 RUN dotnet publish -c Release -o bin/publish /p:LinkDuringPublish=true
 
-FROM mcr.microsoft.com/dotnet/core/runtime-deps:3.0-buster-slim AS runtime
+FROM mcr.microsoft.com/dotnet/core/runtime:3.0-buster-slim AS runtime
 
 LABEL Author="Vadim Kosin <vkosin@outlook.com>"
 WORKDIR /system
