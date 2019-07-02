@@ -1,4 +1,4 @@
-FROM http://mcr.microsoft.com/dotnet/core/sdk:3.0-buster-arm32v7 AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:3.0-buster-arm32v7 AS build
 
 
 # copy csproj and restore as distinct layers
@@ -11,7 +11,7 @@ FROM build AS publish
 WORKDIR /system
 RUN dotnet publish -c Release -r linux-arm -o bin/publish /p:LinkDuringPublish=true
 
-FROM http://mcr.microsoft.com/dotnet/core/runtime:3.0-buster-arm32v7 AS runtime
+FROM mcr.microsoft.com/dotnet/core/runtime:3.0-buster-arm32v7 AS runtime
 
 #full
 #FROM microsoft/dotnet:2.1-runtime-stretch-slim-arm32v7 AS runtime
