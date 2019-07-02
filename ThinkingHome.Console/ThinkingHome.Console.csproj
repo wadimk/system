@@ -2,7 +2,7 @@
   <Import Project="../Package.xml" />
   <PropertyGroup>
     <Description />
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
     <OutputType>Exe</OutputType>
   </PropertyGroup>
   <ItemGroup>
@@ -16,6 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ThinkingHome.Core.Infrastructure\ThinkingHome.Core.Infrastructure.csproj" />
     <ProjectReference Include="..\ThinkingHome.Core.Plugins\ThinkingHome.Core.Plugins.csproj" />
+    <ProjectReference Include="..\ThinkingHome.Plugins.Core.WebUi\ThinkingHome.Plugins.Core.WebUi.csproj" />
     <ProjectReference Include="..\ThinkingHome.Plugins.Database.Backup\ThinkingHome.Plugins.Database.Backup.csproj" />
     <ProjectReference Include="..\ThinkingHome.Plugins.Database\ThinkingHome.Plugins.Database.csproj" />
     <ProjectReference Include="..\ThinkingHome.Plugins.Mail\ThinkingHome.Plugins.Mail.csproj" />

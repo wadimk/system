@@ -10,6 +10,22 @@ namespace ThinkingHome.Plugins.Cron.WebApi
 {
     public class CronWebApiPlugin : PluginBase
     {
+
+        public override void StartPlugin()
+        {
+
+        }
+
+        public override void StopPlugin()
+        {
+
+        }
+
+        public override void InitPlugin()
+        {
+
+        }
+
         private object ToApiModel(CronTask task)
         {
             return new

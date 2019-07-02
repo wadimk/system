@@ -42,6 +42,16 @@ namespace ThinkingHome.Plugins.Database
 
         }
 
+        public override void StartPlugin()
+        {
+            
+        }
+
+        public override void StopPlugin()
+        {
+            
+        }
+
         private void ApplyMigrations()
         {
             var factory = new PostgreSQLProviderFactory();

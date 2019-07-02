@@ -69,9 +69,8 @@ namespace ThinkingHome.Plugins.NooLite
 
             #endregion
 
-            Context.Require<ScriptsPlugin>().RegisterScriptEvent("noolite:data:received");
-            Context.Require<ScriptsPlugin>().RegisterScriptEvent("noolite:microclimate-data:received");
-            
+            Context.Require<ScriptsPlugin>().RegisterScriptEvent("noolite:data:received", typeof(byte), typeof(Int16), typeof(byte), typeof(byte), typeof(byte), typeof(byte), typeof(byte));
+            Context.Require<ScriptsPlugin>().RegisterScriptEvent("noolite:microclimate-data:received", typeof(Int16), typeof(decimal), typeof(Int16), typeof(Boolean));
         }
 
         #region events

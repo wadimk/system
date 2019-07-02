@@ -20,40 +20,11 @@ namespace ThinkingHome.Plugins.WebServer
 
         private IHubContext<MessageHub> hubContext;
 
+        private int port;
+
         public override void InitPlugin()
         {
-            var port = Configuration.GetValue("port", 41831);
-            var handlers = RegisterHandlers();
-                       
-            host = new WebHostBuilder()
-                .UseKestrel()                
-                .UseUrls($"http://*:{port}")
-                .Configure(app => app
-                    .UseSignalR(routes => routes.MapHub<MessageHub>(MessageHub.HUB_ROUTE))                    
-                    .UseResponseCompression()
-                    .UseStatusCodePages()
-                    .UseMiddleware<HomePluginsMiddleware>(handlers)
-                    )
-                .ConfigureServices(services =>
-                {
-                    services.AddResponseCompression();
-                    services.AddMemoryCache();
-
-                    services.AddSignalR(configure => {
-                        configure.EnableDetailedErrors = true;
-                        });
-
-
-                })
-                .ConfigureLogging(builder => builder
-                    .AddProxy(Logger))
-                    .Build();
-            
-            var msgHandlers = RegisterMessageHandlers();
-            hubContext = host.Services.GetService<IHubContext<MessageHub>>();
-
-            MessageHub.Message += (id, timestamp, channel, data) =>
-                SafeInvoke(msgHandlers[channel], fn => fn(id, timestamp, channel, data));
+            port = Configuration.GetValue("port", 41831);
         }
 
         private ObjectRegistry<IHandler> RegisterHandlers()
@@ -95,7 +66,39 @@ namespace ThinkingHome.Plugins.WebServer
         }
 
         public override void StartPlugin()
-        {            
+        {
+            var handlers = RegisterHandlers();
+
+            host = new WebHostBuilder()
+                .UseKestrel()
+                .UseUrls($"http://*:{port}")
+                .Configure(app => app
+                    .UseSignalR(routes => routes.MapHub<MessageHub>(MessageHub.HUB_ROUTE))
+                    .UseResponseCompression()
+                    .UseStatusCodePages()
+                    .UseMiddleware<HomePluginsMiddleware>(handlers)
+                )
+                .ConfigureServices(services =>
+                {
+                    services.AddResponseCompression();
+                    services.AddMemoryCache();
+
+                    services.AddSignalR(configure => {
+                        configure.EnableDetailedErrors = true;
+                    });
+
+
+                })
+                .ConfigureLogging(builder => builder
+                    .AddProxy(Logger))
+                .Build();
+
+            var msgHandlers = RegisterMessageHandlers();
+            hubContext = host.Services.GetService<IHubContext<MessageHub>>();
+
+            MessageHub.Message += (id, timestamp, channel, data) =>
+                SafeInvoke(msgHandlers[channel], fn => fn(id, timestamp, channel, data));
+
             // важно запускать Start вместо Run, чтобы оно не лезло напрямую в консоль
             host.Start();
         }

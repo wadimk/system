@@ -26,6 +26,16 @@ namespace ThinkingHome.Plugins.WebServer.UrlValidation
             }
         }
 
+        public override void StartPlugin()
+        {
+            
+        }
+
+        public override void StopPlugin()
+        {
+            
+        }
+
         private void AddError(TypeInfo pluginType, string message)
         {
             errors.Add($"[{pluginType}] :: {message}");

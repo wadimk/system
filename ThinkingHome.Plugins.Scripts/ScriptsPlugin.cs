@@ -43,6 +43,16 @@ namespace ThinkingHome.Plugins.Scripts
             };
         }
 
+        public override void StartPlugin()
+        {
+            
+        }
+
+        public override void StopPlugin()
+        {
+            
+        }
+
         [DbModelBuilder]
         public void InitModel(ModelBuilder modelBuilder)
         {

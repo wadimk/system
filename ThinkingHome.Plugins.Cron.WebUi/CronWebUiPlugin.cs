@@ -19,5 +19,19 @@ namespace ThinkingHome.Plugins.Cron.WebUi
     [HttpLocalizationResource("/static/cron/lang.json")]
     public class CronWebUiPlugin : PluginBase
     {
+        public override void InitPlugin()
+        {
+            
+        }
+
+        public override void StartPlugin()
+        {
+            
+        }
+
+        public override void StopPlugin()
+        {
+            
+        }
     }
 }

@@ -80,7 +80,16 @@ namespace ThinkingHome.Plugins.WebUi
         private readonly ObjectRegistry<string> aliases = new ObjectRegistry<string>();
         private readonly ObjectRegistry<string> templates = new ObjectRegistry<string>();
         private readonly HashSet<string> alautoLoadedStyles = new HashSet<string>();
+        
+        public override void StartPlugin()
+        {
 
+        }
+
+        public override void StopPlugin()
+        {
+
+        }
         public override void InitPlugin()
         {
             aliases.Register("welcome", Configuration.GetValue("pages:welcome", "/static/web-ui/dummy.js"));
