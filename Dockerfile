@@ -16,4 +16,4 @@ ENV plugins:ThinkingHome.Plugins.Database.DatabasePlugin:connectionString host=p
      
 EXPOSE 8080
 
-CMD ["ThinkingHome.Console"]
+CMD ["./ThinkingHome.Console"]
