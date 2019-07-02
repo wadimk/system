@@ -121,7 +121,7 @@ namespace ThinkingHome.Core.Infrastructure
             return serviceCollection.BuildServiceProvider();
         }
 
-        private static void AddAssemblyPlugins(ServiceCollection services, Assembly asm)
+        private static void AddAssemblyPlugins(IServiceCollection services, Assembly asm)
         {
             var baseType = typeof(PluginBase);
 

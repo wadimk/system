@@ -24,20 +24,11 @@ namespace ThinkingHome.Core.Plugins
 
         #region life cycle
 
-        public virtual void InitPlugin()
-        {
+        public abstract void InitPlugin();
 
-        }
+        public abstract void StartPlugin();
 
-        public virtual void StartPlugin()
-        {
-
-        }
-
-        public virtual void StopPlugin()
-        {
-
-        }
+        public abstract void StopPlugin();
 
         #endregion
 

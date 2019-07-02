@@ -29,6 +29,16 @@ namespace ThinkingHome.Plugins.NooLite.WebUi
             Logger.LogInformation($"init NooLite.WebUi plugin {Guid.NewGuid()}");
         }
 
+        public override void StartPlugin()
+        {
+            
+        }
+
+        public override void StopPlugin()
+        {
+            
+        }
+
         [WebApiMethod("/api/noolite/web-api/list")]
         public object GetTaskList(HttpRequestParams request)
         {

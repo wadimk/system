@@ -28,12 +28,21 @@ namespace ThinkingHome.Plugins.Cron
 
         public override void InitPlugin()
         {
-            base.InitPlugin();
             schedule = new List<CronScheduleItem>();
 
             handlers = RegisterHandlers();
 
             Context.Require<ScriptsPlugin>().RegisterScriptEvent("cron:task:started", typeof(Guid));
+        }
+
+        public override void StartPlugin()
+        {
+            
+        }
+
+        public override void StopPlugin()
+        {
+            
         }
 
         [DbModelBuilder]

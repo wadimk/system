@@ -47,6 +47,16 @@ namespace ThinkingHome.Plugins.WebUi.Apps
             sections.AddRange(list);
         }
 
+        public override void StartPlugin()
+        {
+            
+        }
+
+        public override void StopPlugin()
+        {
+            
+        }
+
 
         #region web api
 

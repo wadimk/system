@@ -9,6 +9,22 @@ namespace ThinkingHome.Plugins.Mail
 {
     public class MailPlugin : PluginBase
     {
+
+        public override void StartPlugin()
+        {
+
+        }
+
+        public override void StopPlugin()
+        {
+
+        }
+
+        public override void InitPlugin()
+        {
+
+        }
+
         #region options
 
         private string FromName => Configuration.GetValue<string>("fromName");

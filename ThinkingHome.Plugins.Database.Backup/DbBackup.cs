@@ -14,7 +14,17 @@ namespace ThinkingHome.Plugins.Database.Backup
     {
         public override void InitPlugin()
         {
-            base.InitPlugin();
+            
+        }
+
+        public override void StartPlugin()
+        {
+            
+        }
+
+        public override void StopPlugin()
+        {
+            
         }
 
 

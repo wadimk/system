@@ -28,6 +28,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThinkingHome.Core.Infrastructure", "ThinkingHome.Core.Infrastructure\ThinkingHome.Core.Infrastructure.csproj", "{890C6D53-A6E7-481E-B807-366B120FF886}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThinkingHome.Console", "ThinkingHome.Console\ThinkingHome.Console.csproj", "{1B662C37-1DD3-42F4-AE9B-1F31CD0B8722}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8D06DFF8-4824-4566-94FC-AD56465792BD} = {8D06DFF8-4824-4566-94FC-AD56465792BD}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{04A6083B-18F9-4DD9-99CD-60D0861EDD7A}"
 EndProject
@@ -60,7 +63,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThinkingHome.Plugins.Telegr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThinkingHome.Plugins.NooLite.WebUi", "ThinkingHome.Plugins.NooLite.WebUi\ThinkingHome.Plugins.NooLite.WebUi.csproj", "{B2E05EA1-4DD6-4DCD-AA96-4D9728C088A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThinkingHome.Plugins.Database.Backup", "ThinkingHome.Plugins.Database.Backup\ThinkingHome.Plugins.Database.Backup.csproj", "{9C033AF9-3CCD-4DE8-B2BB-5D21B083BA43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThinkingHome.Plugins.Database.Backup", "ThinkingHome.Plugins.Database.Backup\ThinkingHome.Plugins.Database.Backup.csproj", "{9C033AF9-3CCD-4DE8-B2BB-5D21B083BA43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThinkingHome.Plugins.Core.WebUi", "ThinkingHome.Plugins.Core.WebUi\ThinkingHome.Plugins.Core.WebUi.csproj", "{8D06DFF8-4824-4566-94FC-AD56465792BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -348,6 +353,18 @@ Global
 		{9C033AF9-3CCD-4DE8-B2BB-5D21B083BA43}.Release|x64.Build.0 = Release|Any CPU
 		{9C033AF9-3CCD-4DE8-B2BB-5D21B083BA43}.Release|x86.ActiveCfg = Release|Any CPU
 		{9C033AF9-3CCD-4DE8-B2BB-5D21B083BA43}.Release|x86.Build.0 = Release|Any CPU
+		{8D06DFF8-4824-4566-94FC-AD56465792BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D06DFF8-4824-4566-94FC-AD56465792BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D06DFF8-4824-4566-94FC-AD56465792BD}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8D06DFF8-4824-4566-94FC-AD56465792BD}.Debug|x64.Build.0 = Debug|Any CPU
+		{8D06DFF8-4824-4566-94FC-AD56465792BD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8D06DFF8-4824-4566-94FC-AD56465792BD}.Debug|x86.Build.0 = Debug|Any CPU
+		{8D06DFF8-4824-4566-94FC-AD56465792BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D06DFF8-4824-4566-94FC-AD56465792BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D06DFF8-4824-4566-94FC-AD56465792BD}.Release|x64.ActiveCfg = Release|Any CPU
+		{8D06DFF8-4824-4566-94FC-AD56465792BD}.Release|x64.Build.0 = Release|Any CPU
+		{8D06DFF8-4824-4566-94FC-AD56465792BD}.Release|x86.ActiveCfg = Release|Any CPU
+		{8D06DFF8-4824-4566-94FC-AD56465792BD}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -374,6 +391,7 @@ Global
 		{960A9C44-3D0F-42F4-8F81-F89588EAC9E0} = {5DF04DCB-BC26-42FA-B7D6-CFC24963F1A8}
 		{B2E05EA1-4DD6-4DCD-AA96-4D9728C088A2} = {5DF04DCB-BC26-42FA-B7D6-CFC24963F1A8}
 		{9C033AF9-3CCD-4DE8-B2BB-5D21B083BA43} = {5DF04DCB-BC26-42FA-B7D6-CFC24963F1A8}
+		{8D06DFF8-4824-4566-94FC-AD56465792BD} = {5DF04DCB-BC26-42FA-B7D6-CFC24963F1A8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4A6E931E-EDD1-4960-ADEE-2145A02FEE0B}

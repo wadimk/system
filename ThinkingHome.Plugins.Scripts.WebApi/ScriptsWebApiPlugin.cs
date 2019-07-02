@@ -12,6 +12,22 @@ namespace ThinkingHome.Plugins.Scripts.WebApi
 {
     public class ScriptsWebApiPlugin : PluginBase
     {
+
+        public override void StartPlugin()
+        {
+
+        }
+
+        public override void StopPlugin()
+        {
+
+        }
+
+        public override void InitPlugin()
+        {
+
+        }
+
         #region scripts
 
         [WebApiMethod("/api/scripts/web-api/list")]
