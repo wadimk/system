@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Esprima.Ast;
 using Microsoft.EntityFrameworkCore;
 using ThinkingHome.Core.Plugins;
 using ThinkingHome.Core.Plugins.Utils;
-using ThinkingHome.Plugins.Cron.Model;
-using ThinkingHome.Plugins.Database;
 using ThinkingHome.Plugins.WebServer.Attributes;
 using ThinkingHome.Plugins.WebServer.Handlers;
 
