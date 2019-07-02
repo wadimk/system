@@ -9,7 +9,7 @@ FROM mcr.microsoft.com/dotnet/core/runtime-deps:3.0-buster-slim AS runtime
 
 LABEL Author="Vadim Kosin <vkosin@outlook.com>"
 WORKDIR /system
-COPY --from=build /system/ThinkingHome.Console/bin/publish .
+COPY --from=build /system/bin/publish .
 
 # db connection string
 ENV plugins:ThinkingHome.Plugins.Database.DatabasePlugin:connectionString host=postgres;port=5432;database=postgres;user name=postgres;password=123
