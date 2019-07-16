@@ -2,7 +2,7 @@ FROM mcr.microsoft.com/dotnet/core/sdk:3.0-buster-arm32v7 AS build
 WORKDIR /system
 COPY . .
 COPY /Docker/qemu-arm-static /usr/bin
-RUN  [ "/usr/bin/qemu-arm-static", "dotnet", "publish -c Release -r linux-arm -o bin/publish /p:LinkDuringPublish=true" ]
+RUN dotnet publish -c Release -r linux-arm -o bin/publish /p:LinkDuringPublish=true
 
 FROM mcr.microsoft.com/dotnet/core/runtime:3.0-buster-slim-arm32v7 AS runtime
 
