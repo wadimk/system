@@ -1,0 +1,12 @@
+image: vkosin/thinking-home:latest
+manifests:
+  -
+    image: vkosin/thinking-home:amd64-latest
+    platform:
+      architecture: amd64
+      os: linux
+  -
+    image: vkosin/thinking-home:arm32v7-latest
+    platform:
+      architecture: arm
+      os: linux
