@@ -6,6 +6,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using MQTTnet;
 using MQTTnet.Client;
+using MQTTnet.Client.Connecting;
+using MQTTnet.Client.Disconnecting;
+using MQTTnet.Client.Options;
+using MQTTnet.Client.Receiving;
 using MQTTnet.Protocol;
 using ThinkingHome.Core.Plugins;
 using ThinkingHome.Core.Plugins.Utils;
@@ -56,10 +60,10 @@ namespace ThinkingHome.Plugins.Mqtt
 
 
             client = Factory.CreateMqttClient();
-            client.Connected += client_Connected;
-            client.Disconnected += client_Disconnected;
-            client.ApplicationMessageReceived += client_ApplicationMessageReceived;
-
+            client.ApplicationMessageReceivedHandler = new MqttApplicationMessageReceivedHandlerDelegate(OnAppMessage);
+            client.ConnectedHandler = new MqttClientConnectedHandlerDelegate(OnConnected);
+            client.DisconnectedHandler = new MqttClientDisconnectedHandlerDelegate(OnDisconnected);
+            
             handlers = RegisterHandlers();
 
             Context.Require<ScriptsPlugin>().RegisterScriptEvent("mqtt:message:received");
@@ -163,14 +167,14 @@ namespace ThinkingHome.Plugins.Mqtt
             }
         }
 
-        private async void client_Connected(object s, EventArgs e)
+        private async void OnConnected(MqttClientConnectedEventArgs e)
         {
             Logger.LogInformation("MQTT client is connected");
 
             Logger.LogInformation($"Subscribe: {string.Join(", ", Topics)}");
 
             var filters = Topics
-                .Select(topic => new TopicFilter(topic, MqttQualityOfServiceLevel.AtMostOnce))
+                .Select(topic => new TopicFilter() { Topic = topic, QualityOfServiceLevel = MqttQualityOfServiceLevel.AtMostOnce })
                 .ToArray();
 
             await client.SubscribeAsync(filters);
@@ -178,12 +182,12 @@ namespace ThinkingHome.Plugins.Mqtt
             Logger.LogInformation("MQTT client is subscribed");
         }
 
-        private void client_Disconnected(object s, EventArgs e)
+        private void OnDisconnected(MqttClientDisconnectedEventArgs e)
         {
             Logger.LogInformation("MQTT connection closed");
         }
 
-        private void client_ApplicationMessageReceived(object sender, MqttApplicationMessageReceivedEventArgs e)
+        private void OnAppMessage(MqttApplicationMessageReceivedEventArgs e)
         {
             var msg = e.ApplicationMessage;
             var payload = Encoding.UTF8.GetString(msg.Payload);
