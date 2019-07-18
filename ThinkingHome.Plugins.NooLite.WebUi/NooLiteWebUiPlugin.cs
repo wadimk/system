@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
 using ThinkingHome.Core.Plugins;
-using ThinkingHome.Plugins.Timer;
-using ThinkingHome.Plugins.WebServer;
 using ThinkingHome.Plugins.WebServer.Attributes;
 using ThinkingHome.Plugins.WebServer.Handlers;
 using ThinkingHome.Plugins.WebServer.Messages;
