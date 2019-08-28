@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Immutable;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using ThinkingHome.Core.Plugins;
 using ThinkingHome.Core.Plugins.Utils;
-using ThinkingHome.Plugins.WebServer;
 using ThinkingHome.Plugins.WebServer.Attributes;
 using ThinkingHome.Plugins.WebServer.Handlers;
 using ThinkingHome.Plugins.WebServer.Messages;

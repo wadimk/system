@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using Microsoft.EntityFrameworkCore;
 using ThinkingHome.Core.Plugins;
 using ThinkingHome.Plugins.Database;
 using ThinkingHome.Plugins.Scripts.Model;

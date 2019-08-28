@@ -41,10 +41,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{152B1C81-305F-4223-8B3A-E66DBC7E5EFB}"
 	ProjectSection(SolutionItems) = preProject
 		build.sh = build.sh
-		Dockerfile = Dockerfile
-		Dockerfile.arm32v7 = Dockerfile.arm32v7
+		Docker\Dockerfile = Docker\Dockerfile
+		Docker\Dockerfile.arm32v7 = Docker\Dockerfile.arm32v7
+		Docker\manifest.yaml = Docker\manifest.yaml
 		Package.xml = Package.xml
 		README.md = README.md
+		Docker\readme.md = Docker\readme.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThinkingHome.Plugins.Mqtt", "ThinkingHome.Plugins.Mqtt\ThinkingHome.Plugins.Mqtt.csproj", "{9592D1CF-9DC4-46CC-8504-D9321CEF19AE}"
@@ -65,7 +67,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThinkingHome.Plugins.NooLit
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThinkingHome.Plugins.Database.Backup", "ThinkingHome.Plugins.Database.Backup\ThinkingHome.Plugins.Database.Backup.csproj", "{9C033AF9-3CCD-4DE8-B2BB-5D21B083BA43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThinkingHome.Plugins.Core.WebUi", "ThinkingHome.Plugins.Core.WebUi\ThinkingHome.Plugins.Core.WebUi.csproj", "{8D06DFF8-4824-4566-94FC-AD56465792BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThinkingHome.Plugins.Core.WebUi", "ThinkingHome.Plugins.Core.WebUi\ThinkingHome.Plugins.Core.WebUi.csproj", "{8D06DFF8-4824-4566-94FC-AD56465792BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
