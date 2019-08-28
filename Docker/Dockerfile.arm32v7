@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/dotnet/core/sdk:3.0-buster-arm32v7 AS build
 #FROM mcr.microsoft.com/dotnet/core/sdk:3.0-buster AS build
 
-COPY qemu-arm-static /usr/bin
+COPY ./multiarch/qemu-arm-static /usr/bin
 
 WORKDIR /system
 COPY . .
