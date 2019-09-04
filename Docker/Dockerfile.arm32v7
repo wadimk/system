@@ -1,11 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:3.0-buster AS prebuild
-WORKDIR /builder
-RUN curl -L https://github.com/balena-io/qemu/releases/download/v3.0.0%2Bresin/qemu-3.0.0+resin-arm.tar.gz | tar zxvf - -C . && mv qemu-3.0.0+resin-arm/qemu-arm-static .
-
 FROM mcr.microsoft.com/dotnet/core/sdk:3.0-buster-arm32v7 AS build
-
-COPY --from=prebuild /builder/qemu-arm-static /usr/bin
-
 WORKDIR /system
 COPY . .
 RUN dotnet publish -c Release -r linux-arm -o bin/publish /p:LinkDuringPublish=true
