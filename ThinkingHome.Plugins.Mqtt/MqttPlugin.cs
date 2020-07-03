@@ -174,7 +174,7 @@ namespace ThinkingHome.Plugins.Mqtt
             Logger.LogInformation($"Subscribe: {string.Join(", ", Topics)}");
 
             var filters = Topics
-                .Select(topic => new TopicFilter() { Topic = topic, QualityOfServiceLevel = MqttQualityOfServiceLevel.AtMostOnce })
+                .Select(topic => new MqttTopicFilter() { Topic = topic, QualityOfServiceLevel = MqttQualityOfServiceLevel.AtMostOnce })
                 .ToArray();
 
             await client.SubscribeAsync(filters);
